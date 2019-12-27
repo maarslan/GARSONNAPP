@@ -23,7 +23,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     this.storage.get('auth-token').then(token => {
       if (token) {
-        this.router.navigate(['/menu']);
+        this.router.navigate(['/menu/streams']);
       }
     }).catch(err => {
       console.log(err);
@@ -39,7 +39,7 @@ export class LoginPage implements OnInit {
       console.log(data);
       setTimeout(() => {
         this.DismissLoader();
-        this.router.navigateByUrl('menu');
+        this.router.navigateByUrl('menu/streams');
       }, 2000);
     }, err => {
       this.DismissLoader();

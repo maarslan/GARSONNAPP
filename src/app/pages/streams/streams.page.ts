@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyService } from 'src/app/services/company.service';
 import { TokenService } from 'src/app/services/token.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-streams',
@@ -9,12 +10,15 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class StreamsPage implements OnInit {
   user: any;
+  company: any;
   constructor(
     private companyService: CompanyService,
-    private tokenService: TokenService) { }
+    private tokenService: TokenService,
+    private menu: MenuController) { }
 
   ngOnInit() {
     this.init();
+    this.displayAllCompanies();
   }
   init() {
     this.tokenService.GetPayload().then(data => {
@@ -24,6 +28,8 @@ export class StreamsPage implements OnInit {
   }
   displayAllCompanies() {
     this.companyService.getAllCompanies().subscribe(data => {
+
+      this.company = data;
       console.log(data);
     }, err => { console.log(err); });
   }

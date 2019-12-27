@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { MenuPage } from './menu.page';
+import { StreamsPage } from '../streams/streams.page';
 
 const routes: Routes = [
   {
@@ -13,6 +14,14 @@ const routes: Routes = [
     }]
 
   },
+  {
+    path: 'company',
+    loadChildren: () => import('../company/company.module').then(m => m.CompanyPageModule)
+  },
+  {
+    path: '',
+    redirectTo: '/streams'
+  }
 
 ];
 
