@@ -8,14 +8,14 @@ const routes: Routes = [
   {
     path: '',
     component: MenuPage,
-    children: [{
-      path: 'streams',
-      loadChildren: () => import('../streams/streams.module').then(m => m.StreamsPageModule)
-    }]
-
+    children: [
+      {
+        path: 'streams',
+        loadChildren: () => import('../streams/streams.module').then(m => m.StreamsPageModule),
+      }]
   },
   {
-    path: 'company',
+    path: 'company/:id',
     loadChildren: () => import('../company/company.module').then(m => m.CompanyPageModule)
   },
   {

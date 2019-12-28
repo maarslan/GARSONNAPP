@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CompanyService } from 'src/app/services/company.service';
 import { TokenService } from 'src/app/services/token.service';
 import { MenuController } from '@ionic/angular';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-streams',
@@ -11,10 +12,12 @@ import { MenuController } from '@ionic/angular';
 export class StreamsPage implements OnInit {
   user: any;
   company: any;
+  companyId: any;
   constructor(
     private companyService: CompanyService,
     private tokenService: TokenService,
-    private menu: MenuController) { }
+    private menu: MenuController,
+    private router: Router) { }
 
   ngOnInit() {
     this.init();
@@ -34,5 +37,10 @@ export class StreamsPage implements OnInit {
     }, err => { console.log(err); });
   }
 
+  selectedCompany(event, val) {
+    console.log(val._id);
+    this.companyId = val._id;
 
+    this.router.navigate(['menu/company/' + this.companyId]);
+  }
 }

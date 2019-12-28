@@ -32,15 +32,6 @@ export class MenuPage implements OnInit {
   }
 
 
-  openEnd() {
-    this.menu.open('end');
-  }
-
-  openCustom() {
-    this.menu.enable(true, 'custom');
-    this.menu.open('custom');
-  }
-
   init() {
     this.tokenService.GetPayload().then(data => {
       this.user = data;

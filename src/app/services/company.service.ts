@@ -13,6 +13,8 @@ export class CompanyService {
 
   getAllCompanies(): Observable<any> {
     return this.http.get<any>(BASEURL + '/app/display-companies');
-
+  }
+  getSelectedCompany(id): Observable<any> {
+    return this.http.get<any>(BASEURL + '/app/display-selected-company/' + id);
   }
 }
